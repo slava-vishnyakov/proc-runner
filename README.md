@@ -1,6 +1,6 @@
 
 ```php
-$r = new ProcRunner\Runner('redis-cli');
+$r = new ProcRunner\LocalRunner('redis-cli');
 
 try {
     $r->send("GET test\n");

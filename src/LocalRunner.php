@@ -2,7 +2,7 @@
 
 namespace ProcRunner;
 
-class Runner implements RunnerInterface
+class LocalRunner implements RunnerInterface
 {
     const PROCESS_WENT_AWAY = "Process went away, see readStderrLineIfAny() for any hints";
 
@@ -67,7 +67,7 @@ class Runner implements RunnerInterface
             $read = [$pipe];
             stream_select($read, $null, $null, $timeout == null ? 1.0 : ($timeout / 3));
 
-            if (microtime(true) - $start > $timeout) {
+            if (!is_null($timeout) && (microtime(true) - $start > $timeout)) {
                 return '';
             }
         }
