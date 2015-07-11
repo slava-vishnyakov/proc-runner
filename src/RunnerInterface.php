@@ -1,5 +1,7 @@
 <?php
 
+namespace ProcRunner;
+
 interface RunnerInterface
 {
     public function isAlive();

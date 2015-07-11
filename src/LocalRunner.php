@@ -1,6 +1,6 @@
 <?php
 
-require __DIR__ . '/RunnerInterface.php';
+namespace ProcRunner;
 
 class Runner implements RunnerInterface
 {
