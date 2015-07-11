@@ -2,6 +2,8 @@
 
 namespace ProcRunner;
 
+use RuntimeException;
+
 class LocalRunner implements RunnerInterface
 {
     const PROCESS_WENT_AWAY = "Process went away, see readStderrLineIfAny() for any hints";
@@ -41,6 +43,18 @@ class LocalRunner implements RunnerInterface
     {
         $status = proc_get_status($this->process);
         return $status['running'] === true;
+    }
+
+    public function readAll()
+    {
+        $buffer = [];
+        while($this->isAlive()) {
+            try {
+                $buffer [] = $this->readLine();
+            } catch (\Exception $e) {
+            }
+        }
+        return join('', $buffer);
     }
 
     public function send($string)

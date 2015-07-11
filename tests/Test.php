@@ -26,4 +26,10 @@ class Test extends PHPUnit_Framework_TestCase
         $this->assertEquals(0, $code);
         $this->assertEquals(0, $r->getReturnValue());
     }
+
+    public function testBasic2()
+    {
+        $result = (new \ProcRunner\LocalRunner("ls"))->readAll();
+        $this->assertNotEquals('', $result);
+    }
 }
