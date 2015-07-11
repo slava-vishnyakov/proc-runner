@@ -1,4 +1,6 @@
 
+This is very alpha quality.
+
 ```php
 $r = new ProcRunner\LocalRunner('redis-cli');
 
